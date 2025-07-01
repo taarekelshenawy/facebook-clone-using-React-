@@ -54,7 +54,9 @@ export default function Header() {
                     navbarScroll
                   >
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to={`/profile/${user.id}`}>Profile</Nav.Link>
+                    {user && (
+                        <Nav.Link as={Link} to={`/profile/${user.id}`}>Profile</Nav.Link>
+                      )}
               
                 
                   </Nav>

@@ -86,15 +86,11 @@ useEffect(()=>{
         toast(error.message)
       
        }
-      
     
-
         setShow(false)
-       
-
       
       }
-      console.log(localStorage.getItem('token'))
+ 
 
 // function Deletepost
 async function Deletepost(id){
@@ -124,7 +120,7 @@ try{
 
 // function Getuser
 async function getUser(id){
-    console.log(id)
+ 
     try{
         await axios.get(`https://tarmeezacademy.com/api/v1/users/${id}`)
         .then((res)=>setUser(res.data.data))
