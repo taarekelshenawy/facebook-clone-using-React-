@@ -100,15 +100,13 @@ export default function Profile() {
 
                       </div>
           
-                    {
-                      item.author.id === userinfo.id ? 
-                      <div className='my-card-buttons'>
-                        <Button variant="success"  onClick={()=>Edithandle(item.id)}>Edit</Button>
-                        <Button variant="danger" onClick={()=>Deletepost(item.id)}>Delete</Button>
-                      
-                      </div> :''
+                    {userinfo && item.author.id === userinfo.id && (
+                        <div className='my-card-buttons'>
+                          <Button variant="success" onClick={() => Edithandle(item.id)}>Edit</Button>
+                          <Button variant="danger" onClick={() => Deletepost(item.id)}>Delete</Button>
+                        </div>
+                    )}
 
-                      }
                 
                   </div>
                   <Link to={`/postdetails/${item.id}`}><Card.Img variant="top"  src={item.image} /> </Link>
