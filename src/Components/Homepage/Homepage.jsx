@@ -27,12 +27,7 @@ export default function Homepage() {
     setEditId(id)
     
   }
-  console.log( posts ? posts.map((item)=>{
-    return(
-      console.log(item.image)
-    )
-  }) :"")
-  // console.log(posts[0].image)
+
 
 
   return (
@@ -54,7 +49,7 @@ export default function Homepage() {
                <div  className="my-card-header" >
                   <div className='my-card-data'>
                   <img src={item.author.profile_image} alt='user-image'
-                                    onError={(e) => {
+                        onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = 'https://placehold.co/600x400?text=No+Image';
                       }}
