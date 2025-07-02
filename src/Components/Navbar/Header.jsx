@@ -43,7 +43,7 @@ export default function Header() {
  
   return (
     <div className='container col-8'>
-          <Navbar expand="lg" bg="primary" data-bs-theme="dark">
+          <Navbar expand="lg" bg="primary" data-bs-theme="dark" >
               <Container fluid>
                 <Navbar.Brand as={Link} to="/" aria-label='home-page'>Facebook</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />

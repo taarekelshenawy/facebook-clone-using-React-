@@ -86,7 +86,7 @@ export default function Homepage() {
             />
 </Link>
 
-          <Card.Body>
+          <Card.Body style={{ width: '100%',marginBottom:'20px',minHeight:"120px"}}>
             <p>{item.created_at}</p>
             <Card.Title>{item.title}</Card.Title>
             <Card.Text>
