@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Card from 'react-bootstrap/Card';
 import { FaCommentAlt } from "react-icons/fa";
-import { Facebookcontext } from '../Context/Context';
-import { IoIosAddCircle } from "react-icons/io";
-import Addmodalpost from '../AddModalpost/Addmodalpost';
+
 
 
 export default function Postdetails() {
@@ -42,11 +40,19 @@ export default function Postdetails() {
                 <Card style={{ width: '100%',marginBottom:'20px'}} > 
                   <div  className="my-card-header-postdetails"  > 
                     <div>
-                          <img src={data.author.profile_image} alt='user-image'></img> 
+                          <img src={data.author.profile_image} 
+                          alt='user-image'   onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://placehold.co/600x400?text=No+Image';
+                      }}></img> 
                     </div>
                       <p>{data.author.username}</p>
                   </div>
-                  <Card.Img variant="top" src={data.image} alt={data.title} />
+                  <Card.Img variant="top" src={data.image}
+                   alt={data.title}   onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://placehold.co/600x400?text=No+Image';
+                      }}/>
                   <Card.Body>
                     <p>{data.created_at}</p>
                     <Card.Title>{data.title}</Card.Title>

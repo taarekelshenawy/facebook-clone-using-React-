@@ -53,7 +53,12 @@ export default function Homepage() {
          <Card style={{ width: '100%',marginBottom:'20px'}} key={index} >
                <div  className="my-card-header" >
                   <div className='my-card-data'>
-                  <img src={item.author.profile_image} alt='user-image' ></img>
+                  <img src={item.author.profile_image} alt='user-image'
+                                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://placehold.co/600x400?text=No+Image';
+                      }}
+                   ></img>
                   <p>{item.author.username}</p>
                   </div>
 
@@ -73,8 +78,22 @@ export default function Homepage() {
                 
             
                </div>
-          <Link to={`/postdetails/${item.id}`}>
-          <Card.Img variant="top"  src={item.image ? item.image : 'https://placehold.co/600x400@3x.png'} alt={item.title} /> </Link>
+          {/* <Link to={`/postdetails/${item.id}`}>
+          <Card.Img variant="top" 
+           src={item.image ? item.image : 'https://placehold.co/600x400@3x.png'}
+            alt={item.title} /> </Link> */}
+            <Link to={`/postdetails/${item.id}`}>
+  <Card.Img
+    variant="top"
+    src={item.image || 'https://placehold.co/600x400@3x.png'}
+    alt={item.title || "صورة البوست"}
+    onError={(e) => {
+      e.target.onerror = null;
+      e.target.src = 'https://placehold.co/600x400?text=No+Image';
+    }}
+  />
+</Link>
+
           <Card.Body>
             <p>{item.created_at}</p>
             <Card.Title>{item.title}</Card.Title>
