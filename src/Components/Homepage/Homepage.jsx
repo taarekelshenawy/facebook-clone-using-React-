@@ -27,6 +27,12 @@ export default function Homepage() {
     setEditId(id)
     
   }
+  console.log( posts ? posts.map((item)=>{
+    return(
+      console.log(item.image)
+    )
+  }) :"")
+  // console.log(posts[0].image)
 
 
   return (
@@ -67,7 +73,8 @@ export default function Homepage() {
                 
             
                </div>
-          <Link to={`/postdetails/${item.id}`}><Card.Img variant="top"  src={item.image} alt={item.title} /> </Link>
+          <Link to={`/postdetails/${item.id}`}>
+          <Card.Img variant="top"  src={item.image ? item.image : 'https://placehold.co/600x400@3x.png'} alt={item.title} /> </Link>
           <Card.Body>
             <p>{item.created_at}</p>
             <Card.Title>{item.title}</Card.Title>
