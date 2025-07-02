@@ -73,20 +73,17 @@ export default function Homepage() {
                 
             
                </div>
-          {/* <Link to={`/postdetails/${item.id}`}>
-          <Card.Img variant="top" 
-           src={item.image ? item.image : 'https://placehold.co/600x400@3x.png'}
-            alt={item.title} /> </Link> */}
             <Link to={`/postdetails/${item.id}`}>
-  <Card.Img
-    variant="top"
-    src={item.image || 'https://placehold.co/600x400@3x.png'}
-    alt={item.title || "صورة البوست"}
-    onError={(e) => {
-      e.target.onerror = null;
-      e.target.src = 'https://placehold.co/600x400?text=No+Image';
-    }}
-  />
+            <Card.Img
+              variant="top"
+              src={item.image || 'https://placehold.co/600x400@3x.png'}
+              alt={item.title || "صورة البوست"}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://placehold.co/600x400?text=No+Image';
+              }}
+              className='post-image'
+            />
 </Link>
 
           <Card.Body>
