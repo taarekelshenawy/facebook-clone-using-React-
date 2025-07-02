@@ -3,14 +3,16 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const Facebookcontext = createContext();
 
 const Facebookprovider =(props)=>{
+
     const [posts,setPosts]=useState([]);
     const [show, setShow] = useState(false);
     const [user,setUser]=useState();
     const [userposts,setUserposts]=useState([])
-const  url ='https://tarmeezacademy.com/api/v1';
+    const  url ='https://tarmeezacademy.com/api/v1';
 
 async function getposts() {
     const response = await fetch(`${url}/posts?limit=50`);
@@ -27,7 +29,7 @@ useEffect(()=>{
  async function addRegister(jsonData){
        
        try {
-         const response =  await axios.post('https://tarmeezacademy.com/api/v1/register', 
+         const response =  await axios.post(`${url}/register`, 
                 jsonData,
                         
                 {
@@ -38,23 +40,17 @@ useEffect(()=>{
         )
         const token = response.data.token;
         localStorage.setItem('user',JSON.stringify(response.data.user))
-        console.log(response.data.user.profile_image)
         localStorage.setItem('token',token)
-   
-  
+
           toast('login succefully')
 
-       }catch(error){
+       }
+       catch(error){
         toast(error.message)
       
        }
-      
-    
-
         setShow(false)
        
-
-      
       }
 
 // function login 
@@ -62,7 +58,7 @@ useEffect(()=>{
     const token = localStorage.getItem('token')
        
        try {
-        let response = await axios.post('https://tarmeezacademy.com/api/v1/login', 
+        let response = await axios.post(`${url}/login`, 
                 Data,
                         
                 {
@@ -75,26 +71,22 @@ useEffect(()=>{
         if(response.status >= 200 && response.status < 300){
             localStorage.setItem('token',response.data.token)
             localStorage.setItem('user',JSON.stringify(response.data.user))
-
-      
               toast('login succefully')
 
         }
         
-
-       }catch(error){
+       }
+       catch(error){
         toast(error.message)
       
        }
-    
         setShow(false)
-      
       }
  
 
 // function Deletepost
 async function Deletepost(id){
-    let token = localStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
      let config = {
     headers: {
@@ -104,25 +96,20 @@ async function Deletepost(id){
   }
   
 try{
-       await axios.delete(`https://tarmeezacademy.com/api/v1/posts/${id}`,config
-       
-    )
+       await axios.delete(`${url}/posts/${id}`,config )
     .then(()=> getposts())
 
-}catch(error){
+}
+catch(error){
     alert(error.message)
 }
  
-    
-    
-
 }
 
 // function Getuser
 async function getUser(id){
- 
     try{
-        await axios.get(`https://tarmeezacademy.com/api/v1/users/${id}`)
+        await axios.get(`${url}/users/${id}`)
         .then((res)=>setUser(res.data.data))
     }catch(error){
         toast(error.message)
@@ -132,7 +119,7 @@ async function getUser(id){
 // function getpostsforuser
 async function getPostsforuser(userid) {
     try{
-        const res = await axios.get(`https://tarmeezacademy.com/api/v1/users/${userid}/posts`)
+        const res = await axios.get(`${url}/users/${userid}/posts`)
         setUserposts(res.data.data)
     }catch(error){
         toast(error.message)

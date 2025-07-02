@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import { FaCommentAlt } from "react-icons/fa";
 import { useContext } from 'react';
 import { Facebookcontext } from '../Context/Context';
-import { IoIosAddCircle } from "react-icons/io";
 import addicon from '../images/add.png';
 import Addmodalpost from '../AddModalpost/Addmodalpost';
 import { useState } from 'react';
@@ -68,7 +67,7 @@ export default function Homepage() {
                 
             
                </div>
-          <Link to={`/postdetails/${item.id}`}><Card.Img variant="top"  src={item.image} /> </Link>
+          <Link to={`/postdetails/${item.id}`}><Card.Img variant="top"  src={item.image} alt={item.title} /> </Link>
           <Card.Body>
             <p>{item.created_at}</p>
             <Card.Title>{item.title}</Card.Title>

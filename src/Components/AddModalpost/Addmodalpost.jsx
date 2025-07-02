@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import  { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
@@ -20,9 +20,9 @@ formdata.append("image",image);
 formdata.append('body',body);
 
 async function createpost(){
-let token = localStorage.getItem('token')
+const token = localStorage.getItem('token')
     try{
-        let response = await axios.post('https://tarmeezacademy.com/api/v1/posts',
+        await axios.post('https://tarmeezacademy.com/api/v1/posts',
             formdata,
                  {
                       headers:{
@@ -32,10 +32,8 @@ let token = localStorage.getItem('token')
                 }
             
         )
-        if(response.status >= 200 && response.status <300){
-            toast("success")
-
-        }
+            
+        toast("success")
         setShow(false)
         getposts()
 

@@ -45,7 +45,7 @@ export default function Header() {
     <div className='container col-8'>
           <Navbar expand="lg" bg="primary" data-bs-theme="dark">
               <Container fluid>
-                <Navbar.Brand as={Link} to="/">Facebook</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" aria-label='home-page'>Facebook</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                   <Nav
@@ -53,9 +53,9 @@ export default function Header() {
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                   >
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
+                    <Nav.Link as={Link} to="/" aria-label='home-page'>Home</Nav.Link>
                     {user && (
-                        <Nav.Link as={Link} to={`/profile/${user.id}`}>Profile</Nav.Link>
+                        <Nav.Link as={Link} to={`/profile/${user.id}`} aria-label='profile-page'>Profile</Nav.Link>
                       )}
               
                 

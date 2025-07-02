@@ -109,7 +109,7 @@ export default function Profile() {
 
                 
                   </div>
-                  <Link to={`/postdetails/${item.id}`}><Card.Img variant="top"  src={item.image} /> </Link>
+                  <Link to={`/postdetails/${item.id}`}><Card.Img variant="top"  src={item.image} alt={item.title} /> </Link>
                   <Card.Body>
                     <p>{item.created_at}</p>
                     <Card.Title>{item.title}</Card.Title>

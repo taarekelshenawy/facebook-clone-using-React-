@@ -5,11 +5,10 @@
   gap: 10px;
   border-radius: 5px 5px 0px 0px;
 }
-.my-card-data img{
+.my-card-data img,.my-card-header-postdetails img{
   width: 50px;
   height: 50px;
   border-radius: 50px;
-
 }
 .my-card-data p{
   font-weight: bold;
@@ -55,10 +54,11 @@
 }
 .my-card-header-postdetails{
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   width: 100%;
-   background-color: #80808040;
+  background-color: #80808040;
+  padding: 10px 10px;
 }
 .my-card-buttons{
   display: flex;

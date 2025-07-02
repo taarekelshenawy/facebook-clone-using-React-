@@ -41,10 +41,12 @@ export default function Postdetails() {
             data && 
                 <Card style={{ width: '100%',marginBottom:'20px'}} > 
                   <div  className="my-card-header-postdetails"  > 
-                      <img src={data.author.profile_image} alt='user-image'></img> 
+                    <div>
+                          <img src={data.author.profile_image} alt='user-image'></img> 
+                    </div>
                       <p>{data.author.username}</p>
                   </div>
-                  <Card.Img variant="top" src={data.image} />
+                  <Card.Img variant="top" src={data.image} alt={data.title} />
                   <Card.Body>
                     <p>{data.created_at}</p>
                     <Card.Title>{data.title}</Card.Title>
