@@ -11,17 +11,21 @@ const Facebookprovider =(props)=>{
     const [posts,setPosts]=useState([]);
     const [show, setShow] = useState(false);
     const [user,setUser]=useState();
-    const [userposts,setUserposts]=useState([])
+    const [userposts,setUserposts]=useState([]);
+    const [loading,setLoading]=useState(false);
     const  url ='https://tarmeezacademy.com/api/v1';
 
 async function getposts() {
+      setLoading(true)
     const response = await fetch(`${url}/posts?limit=50`);
     const json= await response.json();
     setPosts(json.data);
+    setLoading(false);
+  
     
 }
 useEffect(()=>{
-    getposts()
+     getposts()
 
 },[])
 
@@ -128,7 +132,7 @@ async function getPostsforuser(userid) {
 }
 
 const contextvalue={posts,addRegister,Logindata,show,setShow,
-    getposts,Deletepost,getUser,user,userposts,getPostsforuser}
+    getposts,Deletepost,getUser,user,userposts,getPostsforuser,loading,setLoading}
 
 
     return(

@@ -9,11 +9,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Editpost from '../Editpost/EditModal';
+import Loading from '../feedback/loading';
 
 
 
 export default function Homepage() {
-  const {posts,Deletepost}= useContext(Facebookcontext);
+  const {posts,Deletepost,loading}= useContext(Facebookcontext);
   const [showmodalpost, setShowmodalpost] = useState(false);
   const [editpost,setEditpost] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -40,9 +41,10 @@ export default function Homepage() {
            
         </div> : ""
       }
-     
-     
-  {
+      {
+        loading ? <Loading/> :
+        <>
+          {
     posts.map((item,index)=>{
       return(
          <Card style={{ width: '100%',marginBottom:'20px'}} key={index} >
@@ -70,8 +72,6 @@ export default function Homepage() {
                 </>
                 }
                
-                
-            
                </div>
             <Link to={`/postdetails/${item.id}`}>
             <Card.Img
@@ -84,7 +84,7 @@ export default function Homepage() {
               }}
               className='post-image'
             />
-</Link>
+          </Link>
 
           <Card.Body style={{ width: '100%',marginBottom:'20px',minHeight:"120px"}}>
             <p>{item.created_at}</p>
@@ -108,10 +108,13 @@ export default function Homepage() {
     },
         
   
-  )
- 
-           
+  )        
   }
+        </> 
+      }
+     
+     
+
    
    
          
