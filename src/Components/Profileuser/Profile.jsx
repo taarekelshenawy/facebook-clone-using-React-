@@ -1,18 +1,20 @@
 import React, { useContext, useEffect } from 'react';
-import Header from '../Navbar/Header';
+import Header from '../Header/Header';
 import { useParams } from 'react-router-dom';
-import { Facebookcontext } from '../Context/Context';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaCommentAlt } from 'react-icons/fa';
 import {Button} from 'react-bootstrap';
 import { useState } from 'react';
 import Editpost from '../Editpost/EditModal';
+import { PostsContext } from '../../Context/PostsContext';
+import { usercontext } from '../../Context/userContext';
 
 
 export default function Profile() {
     const {id}=useParams();
-    const {getUser,user,userposts,getPostsforuser,Deletepost}=useContext(Facebookcontext);
+    const {getUser,user,userposts,getPostsforuser}=useContext(usercontext);
+    const {Deletepost}=useContext(PostsContext)
     const [editpost,setEditpost] = useState(false);
     const [editId, setEditId] = useState(null);
      

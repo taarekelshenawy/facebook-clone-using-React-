@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
-import { Facebookcontext } from '../Context/Context';
+import { PostsContext } from '../../Context/PostsContext';
 
 export default function Addmodalpost({show,setShow}) {
 const handleClose = () => setShow(false);
 const [title,setTitle]=useState();
 const [image,setImage]=useState();
 const [body,setBody]=useState();
-const {getposts}=useContext(Facebookcontext);
+const {getposts}=useContext(PostsContext);
 
 const formdata = new FormData()
 

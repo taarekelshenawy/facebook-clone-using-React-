@@ -6,15 +6,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useContext,  useState } from 'react';
 import Authmodal from '../Modal/Authmodal';
 import Button from 'react-bootstrap/Button';
-import { Facebookcontext } from '../Context/Context';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
+import { PostsContext } from '../../Context/PostsContext';
 
 
 export default function Header() {
 
    const [state,setState]=useState('');
-   const {show,setShow,getposts}=useContext(Facebookcontext);
+   const {show,setShow}=useContext(AuthContext);
+   const {getposts}=useContext(PostsContext)
    const navigate = useNavigate()
    
 

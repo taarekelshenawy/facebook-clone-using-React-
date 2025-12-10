@@ -3,20 +3,22 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useContext, useState } from 'react';
-import { Facebookcontext } from '../Context/Context';
+import { AuthContext } from '../../Context/AuthContext';
+import { PostsContext } from '../../Context/PostsContext';
+
+
 export default function Modallogin({show,setShow}) {
     const [username,setUsername]=useState();
     const [image,setImage]=useState();
     const [password,setPassword]=useState();
-    const {Logindata}=useContext(Facebookcontext);
+    const {Logindata}=useContext(AuthContext);
+    const {getposts}=useContext(PostsContext)
 
        const formData = new FormData();
         formData.append('username',username)
         formData.append('image',image);
         formData.append('password',password);
    
- 
-     
 
       const handleClose = () => setShow(false);
   return (
@@ -64,7 +66,7 @@ export default function Modallogin({show,setShow}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={()=>Logindata(formData)}>
+          <Button variant="primary" onClick={()=>{Logindata(formData);getposts()}}>
             Submit
           </Button>
         </Modal.Footer>

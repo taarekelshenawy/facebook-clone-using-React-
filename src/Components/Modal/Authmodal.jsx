@@ -15,9 +15,6 @@ export default function Authmodal({show,setShow,state}) {
      <Modalregister show={show} setShow={setShow}/>
    
      }
-     
-  
-   
       
     </>
   )

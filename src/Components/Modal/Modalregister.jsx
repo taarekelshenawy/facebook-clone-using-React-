@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { Facebookcontext } from '../Context/Context';
+import { AuthContext } from '../../Context/AuthContext';
 
 
 
@@ -11,7 +11,7 @@ export default function Modalregister({show,setShow}) {
     const [image,setImage]=useState();
     const [password,setPassword]=useState();
     const [name,setName]=useState();
-    const {addRegister}=useContext(Facebookcontext)
+    const {addRegister}=useContext(AuthContext)
 
 
       const jsonData = new FormData();

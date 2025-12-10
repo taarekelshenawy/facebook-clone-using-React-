@@ -4,13 +4,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
-import { Facebookcontext } from '../Context/Context';
+import { PostsContext } from '../../Context/PostsContext';
 
 export default function Editpost({ show, setShow, id }) {
   const handleClose = () => setShow(false);
   const [post, setPost] = useState({ title: '', body: '', image: '' });
   const [image, setImage] = useState();
-  const { getposts } = useContext(Facebookcontext);
+  const { getposts } = useContext(PostsContext);
 
  
   async function getpostbyid(id) {

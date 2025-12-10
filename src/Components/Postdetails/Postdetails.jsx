@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import Header from "../Navbar/Header";
-import axios from "axios";
+import Header from "../Header/Header";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Card from 'react-bootstrap/Card';
 import { FaCommentAlt } from "react-icons/fa";
+import { publicAPI } from "../../API/Axios";
 
 
 
@@ -15,7 +15,7 @@ export default function Postdetails() {
     async function  getpost(id){
 
         try{
-            let response = await axios.get(`https://tarmeezacademy.com/api/v1/posts/${id}`);
+            let response = await publicAPI.get(`/posts/${id}`);
             if(response.status >=200 && response.status <300){
                 setData(response.data.data)
 

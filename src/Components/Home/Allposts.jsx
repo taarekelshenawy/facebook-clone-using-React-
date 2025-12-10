@@ -2,19 +2,19 @@
 import Card from 'react-bootstrap/Card';
 import { FaCommentAlt } from "react-icons/fa";
 import { useContext } from 'react';
-import { Facebookcontext } from '../Context/Context';
-import addicon from '../images/add.png';
+import addicon from '../images/add.png'
 import Addmodalpost from '../AddModalpost/Addmodalpost';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Editpost from '../Editpost/EditModal';
 import Loading from '../feedback/loading';
+import { PostsContext } from '../../Context/PostsContext';
 
 
 
-export default function Homepage() {
-  const {posts,Deletepost,loading}= useContext(Facebookcontext);
+export default function Allposts() {
+  const {posts,Deletepost,loading}= useContext(PostsContext);
   const [showmodalpost, setShowmodalpost] = useState(false);
   const [editpost,setEditpost] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -45,7 +45,7 @@ export default function Homepage() {
         loading ? <Loading/> :
         <>
           {
-    posts.map((item,index)=>{
+    posts?.map((item,index)=>{
       return(
          <Card style={{ width: '100%',marginBottom:'20px'}} key={index} >
                <div  className="my-card-header" >
@@ -113,19 +113,10 @@ export default function Homepage() {
         </> 
       }
      
-     
-
-   
-   
          
 <Editpost show={editpost} setShow={setEditpost} id={editId} />
    
    
-         
-
-  
-         
-
     </div>
   )
 }
